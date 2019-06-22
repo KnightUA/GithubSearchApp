@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">GithubSearchApp</string>
+    <string name="internet_problem">No Internet connection, Please make sure your device is connected</string>
+    <string name="primary_text">Two-line item</string>
+    <string name="secondary_text">Secondary Text</string>
+    <string name="meta">m</string>
 </resources>
