@@ -1,8 +1,10 @@
-package com.example.githubsearchapp;
+package com.example.githubsearchapp.controller;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
+import com.example.githubsearchapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
