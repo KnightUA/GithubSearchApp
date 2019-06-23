@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetworkService {
 
     private static NetworkService mInstance;
-    private static final String BASE_URL = "https://api.github.com";
+    private static final String BASE_URL = "https://api.github.com/";
     private Retrofit mRetrofit;
 
     private NetworkService() {

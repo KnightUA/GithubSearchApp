@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:layout_marginHorizontal="@dimen/default_padding_margin"
+    android:layout_marginTop="@dimen/default_padding_margin"
+    android:clickable="true"
+    android:elevation="60dp"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/default_padding_margin_x"
+        android:paddingVertical="@dimen/default_padding_margin"
+        android:gravity="center">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avatarImg"
+            android:layout_width="@dimen/default_img_size"
+            android:layout_height="@dimen/default_img_size"
+            android:src="@color/colorPrimary"
+            android:layout_marginEnd="@dimen/default_padding_margin_x" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_weight="1"
+            android:text="@string/primary_text"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="@dimen/primaryTextSize" />
+
+    </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>

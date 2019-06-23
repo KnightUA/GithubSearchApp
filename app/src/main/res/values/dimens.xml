@@ -19,5 +19,6 @@
     <dimen name="secondaryFieldsSize">28dp</dimen>
     <dimen name="metaTextSize">12dp</dimen>
     <dimen name="secondaryTextSize">14dp</dimen>
+    <dimen name="large_text_size">18dp</dimen>
 
 </resources>

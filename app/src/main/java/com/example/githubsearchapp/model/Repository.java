@@ -21,11 +21,21 @@ public class Repository {
     @Expose
     private String forkCount;
 
-    public Repository(Owner owner, String name, String description, String forkCount) {
+    @SerializedName("full_name")
+    @Expose
+    private String fullName;
+
+    @SerializedName("watchers")
+    @Expose
+    private String watchersCount;
+
+    public Repository(Owner owner, String name, String description, String forkCount, String fullName, String watchersCount) {
         this.owner = owner;
         this.name = name;
         this.description = description;
         this.forkCount = forkCount;
+        this.fullName = fullName;
+        this.watchersCount = watchersCount;
     }
 
     public Owner getOwner() {
@@ -58,5 +68,21 @@ public class Repository {
 
     public void setForkCount(String forkCount) {
         this.forkCount = forkCount;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getWatchersCount() {
+        return watchersCount;
+    }
+
+    public void setWatchersCount(String watchersCount) {
+        this.watchersCount = watchersCount;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.githubsearchapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.githubsearchapp.controller.RepositoryActivity;
 import com.example.githubsearchapp.model.Repository;
 import com.squareup.picasso.Picasso;
 
@@ -61,6 +63,12 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
         private TextView forkCount;
         private ImageView ownerAvatar;
 
+        private static final String FULL_NAME_TAG = "full_name";
+        private static final String AVATAR_TAG = "avatar_url";
+        private static final String REPOSITORY_NAME_TAG = "repository_name_url";
+        private static final String WATCHER_TAG = "watchers";
+        private static final String DESCIPTION_TAG = "description";
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -74,8 +82,20 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
                 public void onClick(View view) {
                     int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-                        Repository clickedData = repositories.get(pos);
-                        Toast.makeText(view.getContext(), "You clicked " + clickedData.getName(), Toast.LENGTH_SHORT).show();
+                        Repository clickedRepository = repositories.get(pos);
+
+                        Intent intent = new Intent(context, RepositoryActivity.class);
+
+                        intent.putExtra(FULL_NAME_TAG, repositories.get(pos).getFullName());
+                        intent.putExtra(AVATAR_TAG, repositories.get(pos).getOwner().getAvatarUrl());
+                        intent.putExtra(REPOSITORY_NAME_TAG, repositories.get(pos).getName());
+                        intent.putExtra(WATCHER_TAG, repositories.get(pos).getWatchersCount());
+                        intent.putExtra(DESCIPTION_TAG, repositories.get(pos).getDescription());
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                        context.startActivity(intent);
+
+                        Toast.makeText(view.getContext(), "You clicked " + clickedRepository.getName(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
