@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding_margin_small_x">2dp</dimen>
+    <dimen name="default_padding_margin_small">4dp</dimen>
+    <dimen name="default_padding_margin">8dp</dimen>
+    <dimen name="default_padding_margin_h">12dp</dimen>
+    <dimen name="default_padding_margin_x">16dp</dimen>
+    <dimen name="default_padding_margin_xh">20dp</dimen>
+    <dimen name="default_padding_margin_xx">24dp</dimen>
+    <dimen name="default_padding_margin_xxh">28dp</dimen>
+    <dimen name="default_padding_margin_xxx">32dp</dimen>
+    <dimen name="default_padding_margin_xxxh">36dp</dimen>
+    <dimen name="default_padding_margin_xxxx">40dp</dimen>
+    <dimen name="default_padding_margin_xxxxh">44dp</dimen>
+
+    <dimen name="card_height">88dp</dimen>
+    <dimen name="default_img_size">40dp</dimen>
+    <dimen name="primaryTextSize">16dp</dimen>
+    <dimen name="secondaryFieldsSize">28dp</dimen>
+    <dimen name="metaTextSize">12dp</dimen>
+    <dimen name="secondaryTextSize">14dp</dimen>
+
+</resources>
