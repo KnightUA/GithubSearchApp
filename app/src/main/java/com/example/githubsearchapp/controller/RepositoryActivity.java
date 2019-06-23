@@ -120,7 +120,7 @@ public class RepositoryActivity extends AppCompatActivity {
         try {
             JSONPlaceHolderApi apiService = NetworkService.getInstance().getJSONApi();
             Call<SubscribersResponse> call = apiService.getSubscribersCount(parts[0], parts[1]);
-            Log.d("URL", call.request().url().toString());
+
             call.enqueue(new Callback<SubscribersResponse>() {
                 @Override
                 public void onResponse(Call<SubscribersResponse> call, Response<SubscribersResponse> response) {
