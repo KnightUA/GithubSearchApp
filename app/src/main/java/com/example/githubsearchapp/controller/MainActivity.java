@@ -3,9 +3,13 @@ package com.example.githubsearchapp.controller;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProgressDialog progressDialog;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private String searchQuery = "java";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initViews();
+
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefresh);
 
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_light);
@@ -46,6 +55,34 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Github Repositories Refreshed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.search_menu, menu);
+
+        MenuItem mSearch = menu.findItem(R.id.action_search);
+
+        SearchView mSearchView = (SearchView) mSearch.getActionView();
+        mSearchView.setQueryHint("Search");
+
+        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchQuery = query;
+                progressDialog.show();
+                loadJSON();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 
     private void initViews() {
@@ -63,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
     private void loadJSON() {
         try {
             JSONPlaceHolderApi apiService = NetworkService.getInstance().getJSONApi();
-            Call<RepositoryResponse> call = apiService.getRepositories();
+            Call<RepositoryResponse> call = apiService.getRepositories(searchQuery);
+
             call.enqueue(new Callback<RepositoryResponse>() {
                 @Override
                 public void onResponse(Call<RepositoryResponse> call, Response<RepositoryResponse> response) {
