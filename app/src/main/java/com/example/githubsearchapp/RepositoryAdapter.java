@@ -74,9 +74,6 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
                 public void onClick(View view) {
                     int pos = getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-
-                        /*TODO Add intent to another screen with values of subscribers*/
-
                         Repository clickedData = repositories.get(pos);
                         Toast.makeText(view.getContext(), "You clicked " + clickedData.getName(), Toast.LENGTH_SHORT).show();
                     }
